@@ -16,10 +16,12 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 20.10.14
-      - run: |
-          docker login -u $docker_username -p $docker_pass
-          docker build -t lehuuan18/knorex-assign:latest .
-          docker push lehuuan18/knorex-assign:latest
+      - run: 
+          name: build and push docker image
+          command: |
+            docker login -u $docker_username -p $docker_pass
+            docker build -t lehuuan18/knorex-assign:latest .
+            docker push lehuuan18/knorex-assign:latest 
   deploy:
     executor: aws-cli/default
     steps:
@@ -33,6 +35,10 @@ jobs:
           profile-name: new-profile
           role-arn: 'arn:aws:iam::102979132623:role/Admin'
           source-profile: default
+      - run: 
+          name: eks update config
+          command: aws eks update-kubeconfig --region ap-southeast-1 --name knorex-k8s
+      
 
 workflows:
   build_and_deploy:
