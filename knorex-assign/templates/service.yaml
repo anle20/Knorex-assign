@@ -8,8 +8,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
       protocol: TCP
       name: http
+      targetPort: {{ .Values.service.port }}
+      nodePort: {{ .Values.node.port }}
   selector:
     {{- include "knorex-assign.selectorLabels" . | nindent 4 }}
