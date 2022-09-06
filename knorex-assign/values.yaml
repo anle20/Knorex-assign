@@ -1,0 +1,33 @@
+# Default values for knorex-assign.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+
+image:
+  repository: lehuuan18/knorex-assign
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+
+service:
+  type: NodePort
+  port: 8080
+
+node:
+  port: 30040
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 350Mi
+
+defaultRequest:
+  cpu: 250m
+  memory: 250Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
