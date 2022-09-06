@@ -45,6 +45,12 @@ jobs:
             chmod 700 get_helm.sh
             ./get_helm.sh
             helm version
+      - run: 
+          name: deploy with helm
+          command: |
+            cd knorex-assign
+            helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
+
 
 workflows:
   build_and_deploy:
