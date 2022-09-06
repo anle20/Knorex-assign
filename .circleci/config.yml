@@ -50,9 +50,10 @@ jobs:
           name: deploy with helm
           command: |
             cd knorex-assign
-            aws sts assume-role --role-arn "arn:aws:iam::102979132623:role/Admin" --role-session-name AWSCLI-Session
+            cat ~/.aws/config
+            export AWS_PROFILE=new-profile
             aws sts get-caller-identity
-            helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
+          #  helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
 
 
 workflows:
