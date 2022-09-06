@@ -29,11 +29,6 @@ jobs:
           aws-secret-access-key: aws_secret_key
           aws-region: aws_region_name
           profile-name: default
-      - aws-cli/role-arn-setup:
-          profile-name: new-profile
-          role-arn: 'arn:aws:iam::102979132623:role/Admin'
-          source-profile: default
-
 
 workflows:
   build_and_deploy:
