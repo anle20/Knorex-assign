@@ -37,7 +37,9 @@ jobs:
           source-profile: default
       - run: 
           name: eks update config
-          command: aws eks update-kubeconfig --region ap-southeast-1 --name knorex-k8s
+          command: |
+            aws eks update-kubeconfig --region ap-southeast-1 --name knorex-k8s
+            export AWS_PROFILE=new-profile
 
       - run:
           name: installing helm
@@ -51,7 +53,7 @@ jobs:
           command: |
             cd knorex-assign
             aws sts get-caller-identity
-          #  helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
+            helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
 
 
 workflows:
