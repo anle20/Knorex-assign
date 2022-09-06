@@ -16,7 +16,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run: |
-          docker login
+          docker login -u $docker_username -p $docker_pass
           docker build -t lehuuan18/knorex-assign:latest .
           docker push lehuuan18/knorex-assign:latest
 
