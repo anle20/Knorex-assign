@@ -50,10 +50,9 @@ jobs:
           name: deploy with helm
           command: |
             cd knorex-assign
-            cat ~/.aws/config
             export AWS_PROFILE=new-profile
             aws sts get-caller-identity
-          #  helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
+            helm upgrade knorex-assign . --install --wait --timeout 7200s --history-max 50
 
 
 workflows:
