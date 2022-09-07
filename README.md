@@ -28,7 +28,7 @@ Assume you have the following keys in the store: abc-1, abc-2, xyz-1, xyz-2.
 
 ### Known issues while running on Kubernetes
 
-- The deployment creates 3 replicas of the key-value store service. These replicas do not have a shared memory, and so have different key-value pair stores, instead of all replicas utilizing a common store. We can implement database or using storage classes to handle this issue
+- The deployment creates 3 replicas of the key-value store service. These replicas do not have a shared memory, and so have different key-value pair stores, instead of all replicas utilizing a common store.
 - Key-value pairs are not stored anywhere outside the pod, thus, while requests can be made consistently without downtime, any stored values are lost when a pod restarts or goes down.
 
 ### Source code reference
