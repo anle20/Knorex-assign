@@ -18,7 +18,7 @@ Assume you have the following keys in the store: abc-1, abc-2, xyz-1, xyz-2.
 
 ![knx-architect](https://user-images.githubusercontent.com/52650121/188896332-a32e2622-6f45-4241-8c2f-4a4b19e0204d.png)
 
-### Techical stack
+### Technical stacks
 
 - AWS EKS
 - Helm chart
