@@ -12,6 +12,8 @@ Assume you have the following keys in the store: abc-1, abc-2, xyz-1, xyz-2.
 
 - `/` : GET method. Returns all the key-value pairs in the in-memory store. Also useful for readiness probes and load testing. 
 
+- Access Link: http://knorex-lb-ca9d883fbe96f147.elb.ap-southeast-1.amazonaws.com/
+
 ### Infra Architecture
 
 ![knx-architect](https://user-images.githubusercontent.com/52650121/188896332-a32e2622-6f45-4241-8c2f-4a4b19e0204d.png)
