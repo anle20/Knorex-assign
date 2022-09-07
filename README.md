@@ -12,51 +12,9 @@ Assume you have the following keys in the store: abc-1, abc-2, xyz-1, xyz-2.
 
 - `/` : GET method. Returns all the key-value pairs in the in-memory store. Also useful for readiness probes and load testing. 
 
-## How to run (as binary)
+## Infra Architect
 
-- Fork and clone this repository.
-- Run `go build -o kvstore`.
-- Run the `./kvstore` binary (the service will run on port 8080). 
-
-(Alternatively, you can simply run `go build` and run the resulting `./kv` binary, or give another name to it.)
-
-## How to build and use Docker image
-
-- Fork and clone this repository.
-- Build the Docker image with the command
-```
-docker build -t <image-name>:<tag-name> .
-```
-
-For example, you can run `docker build -t kv-store:latest .`
-
-- After building the image, run it with the command
-```
-docker run -d -p 8080:8080 <image-name>
-```
-(The service will run on port 8080 in this case.)
-
-Alternatively, you can simply pull the docker image (the `latest` image tag is recommended) from the [Dockerhub repository](https://hub.docker.com/repository/docker/importhuman/kv-store).
-
-## Running the service on a k3d cluster
-
-- Fork and clone this repository (or simply copy the `deploy.yaml` file and save it).
-- Create a new k3d cluster with `k3d cluster create kvstore -p "8080:80@loadbalancer"`.
-- Run `kubectl apply -f deploy.yaml`.
-(k3s [deploys traefik](https://k3d.io/v5.0.1/usage/exposing_services/) as the default ingress controller. Coupled with the port mapping, this does not require any further configuration for running the service on k3d. The deployment and configuration have not been tested for other Kubernetes distributions.)
-
-(Please run the service on port 8080, as the deployment file has readiness probe configured for the port.)
-
-### Testing for zero downtime
-
-Testing was done via the CLI tool for [Fortio](https://fortio.org/). Just before the deployment image was updated from `importhuman/kv-store` to use a slightly different image (`importhuman/kv-store:1.3`), the following command was run:
-```
-fortio load -a -c 50 -qps 500 -t 180s "localhost:8080"
-```
-
-Status 200 response was obtained for 100% of the requests. 
-
-The complete logs can be found in `logs.json`.
+![knx-architect](https://user-images.githubusercontent.com/52650121/188896332-a32e2622-6f45-4241-8c2f-4a4b19e0204d.png)
 
 ### Known issues while running on Kubernetes
 
