@@ -6,7 +6,7 @@ metadata:
   labels:
     app: kv-store
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: kv-store
@@ -43,6 +43,6 @@ spec:
   selector:
     app: kv-store
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 8080
       nodePort: 31000
