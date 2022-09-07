@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kvstore-deployment
+  name: knx-deployment
   namespace: default
   labels:
-    app: kv-store
+    app: knorex-assign
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kv-store
+      app: knorex-assign
   template:
     metadata:
       labels:
-        app: kv-store
+        app: knorex-assign
     spec:
       containers:
-      - name: kvstore
-        image: importhuman/kv-store
+      - name: knorex-assign
+        image: lehuuan18/knorex-assign
         ports:
         - containerPort: 8080
         lifecycle:
@@ -37,11 +37,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kvstore-svc
+  name: knx-svc
 spec:
   type: NodePort
   selector:
-    app: kv-store
+    app: knorex-assign
   ports:
     - port: 8080
       targetPort: 8080
