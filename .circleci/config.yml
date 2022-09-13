@@ -7,11 +7,9 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: cimg/base:stable
-        auth:
-          username: $docker_username
-          password: $docker_pass
+    resource_class: arm.medium
+    machine:
+      image: ubuntu-2004:202101-01
     steps:
       - checkout
       - setup_remote_docker:
