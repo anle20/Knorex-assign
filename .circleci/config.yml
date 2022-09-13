@@ -10,6 +10,8 @@ jobs:
     resource_class: arm.medium
     machine:
       image: ubuntu-2004:202101-01
+    environment:
+      DOCKER_BUILDKIT: 1
     steps:
       - checkout
       - setup_remote_docker:
