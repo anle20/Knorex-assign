@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: knorex-assign
-        image: lehuuan18/knorex-assign
+        image: importhuman/kv-store
         ports:
         - containerPort: 8080
         lifecycle:
