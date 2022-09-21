@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: lehuuan18/knorex-assign
+  repository: importhuman/kv-store
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
 
